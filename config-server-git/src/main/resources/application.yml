@@ -1,0 +1,40 @@
+---
+spring:
+  application:
+    name: config-server
+  profiles: peer1
+  cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/OneYX/config-repo
+            basedir: target/config
+            username: 504887284@qq.com
+            password: Yi131415
+server:
+  port: 8001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer1:8761/eureka/,http://eureka-server-peer2:8762/eureka/,http://eureka-server-peer3:8763/eureka/
+
+---
+spring:
+  application:
+    name: config-server
+  profiles: peer2
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/OneYX/config-repo
+          basedir: target/config
+          username: 504887284@qq.com
+          password: Yi131415
+server:
+  port: 8002
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-peer1:8761/eureka/,http://eureka-server-peer2:8762/eureka/,http://eureka-server-peer3:8763/eureka/
+
